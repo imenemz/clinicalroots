@@ -1382,30 +1382,7 @@ Our mission is to take every topic — from core mechanisms to real-world decisi
             </div>
         </div>
     </div>
-    <script>
-async function showCategory(nameOrId) {
-    if (typeof openCategoryById === "function") {
-        const res = await fetch("/api/categories/tree");
-        const tree = await res.json();
-
-        function search(nodes, target) {
-            for (const n of nodes) {
-                if (n.name.toLowerCase() === target.toLowerCase()) return n;
-                if (n.children) {
-                    const found = search(n.children, target);
-                    if (found) return found;
-                }
-            }
-            return null;
-        }
-
-        const match = search(tree, nameOrId);
-        if (match) return openCategoryById(match.id);
-    }
-
-    console.warn("Category not found:", nameOrId);
-}
-</script>
+    <script src="main.js"></script>
 
 </body>
 </html>
